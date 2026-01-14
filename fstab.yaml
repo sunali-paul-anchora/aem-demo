@@ -1,7 +1,2 @@
 mountpoints:
-  /:
-    url: https://content.da.live/adobe/da-live/
-    type: markup
-
-folders:
-  /app/: /apps/custom/shell
+  /: https://drive.google.com/drive/u/0/folders/1PWnSxELId_4eN1wKpbupnIWfAX2esX5v
