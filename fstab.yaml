@@ -1,6 +1,6 @@
 mountpoints:
   /:
-    url: https://drive.google.com/drive/folders/1J_KuP9SmogkJ0x7TkWode3atbVNqpYrC
+    url: https://content.da.live/adobe/da-live/
     type: markup
 
 folders:
