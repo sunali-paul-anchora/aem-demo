@@ -1,0 +1,21 @@
+.learning-stats-wrapper {
+  display: flex;
+  gap: 24px;
+}
+
+.learning-stats-wrapper .stat {
+  background: #f4f6f8;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.learning-stats-wrapper .label {
+  font-size: 14px;
+  color: #666;
+}
+
+.learning-stats-wrapper .value {
+  font-size: 24px;
+  font-weight: bold;
+}
