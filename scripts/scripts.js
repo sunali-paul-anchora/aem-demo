@@ -13,6 +13,62 @@ import {
   loadCSS,
 } from './aem.js';
 
+import { getMetadata } from './lib-franklin.js';
+
+/**
+ * ============================================================
+ * Auto-Block: Article Header
+ * Wraps H1, first image/picture, author, and publication date
+ * into a reusable article-header block
+ * ============================================================
+ */
+function buildArticleHeader(main) {
+  const template = getMetadata('template');
+  if (template !== 'article') return;
+
+  const h1 = main.querySelector('h1');
+  const img = main.querySelector('img, picture');
+  if (!h1 || !img) return;
+
+  const author = getMetadata('author');
+  const date = getMetadata('publication-date');
+
+  const block = document.createElement('div');
+  block.className = 'article-header block';
+  block.dataset.blockName = 'article-header';
+  block.dataset.status = 'loaded';
+
+  const contentDiv = document.createElement('div');
+  const titleEl = document.createElement('h1');
+  titleEl.textContent = h1.textContent;
+  contentDiv.appendChild(titleEl);
+
+  if (author) {
+    const authorEl = document.createElement('p');
+    authorEl.className = 'author';
+    authorEl.textContent = author;
+    contentDiv.appendChild(authorEl);
+  }
+
+  if (date) {
+    const dateEl = document.createElement('p');
+    dateEl.className = 'date';
+    dateEl.textContent = date;
+    contentDiv.appendChild(dateEl);
+  }
+
+  const imgDiv = document.createElement('div');
+  imgDiv.appendChild(img.cloneNode(true));
+
+  block.appendChild(contentDiv);
+  block.appendChild(imgDiv);
+
+  main.prepend(block);
+
+  h1.remove();
+  img.remove();
+}
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -69,6 +125,7 @@ function buildAutoBlocks(main) {
     }
 
     buildHeroBlock(main);
+    buildArticleHeader(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
