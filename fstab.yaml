@@ -1,7 +1,4 @@
 mountpoints:
-  /:
-    url: https://drive.google.com/drive/folders/1J_KuP9SmogkJ0x7TkWode3atbVNqpYrC
-    type: google
   /press:
     url: https://author-p119552-e1901272.adobeaemcloud.com/bin/franklin.delivery/sunali-paul-anchora/aem-demo/main
     type: markup
